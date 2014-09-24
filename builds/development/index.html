@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="myApp">
 <head>
   <meta charset="UTF-8">
   <title>Angular Data</title>
@@ -8,16 +8,14 @@
   <script src="js/lib/angular/angular.min.js"></script>
   <script src="js/lib/angular/angular-route.min.js"></script>
   <script src="js/lib/angular/angular-animate.min.js"></script>
+  <script src="js/app.js"></script>
 </head>
 <body>
 <header>
   <nav class="cf" ng-include="'views/nav.html'"></nav>
 </header>
 <div class="page">
-  <main class="cf">
-    <h1>Hello {{name}}</h1>
-    <input ng-model="name" placeholder="enter your name">
-  </main>
+  <main class="cf" ng-view></main>
 </div>
 </body>
 </html>
