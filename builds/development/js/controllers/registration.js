@@ -5,4 +5,8 @@ myApp.controller('RegistrationController',
     $location.path('/meetings');
   } //login
 
+  $scope.register = function() {
+    $location.path('/meetings');
+  } //login
+
 }); //RegistrationController
