@@ -1,2 +1,6 @@
-<h1>Meetings</h1>
-<p>Here's a list of your meetings.</p>
+<div class="meetings cf">
+  <h2>Your meetings</h2>
+  <div class="meeting" ng-repeat="meeting in meetings"></div>
+    <p>{{ meeting.name }}</p>
+  </div><!-- meetings list -->
+</div><!-- meetings cf -->
