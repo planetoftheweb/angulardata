@@ -7,9 +7,11 @@ myApp.controller('MeetingsController',
   $scope.addMeeting = function() {
     meetings.$push({
       name: $scope.meetingname,
-      date: Firebase.SeverValue.TIMESTAMP
+      date: Firebase.ServerValue.TIMESTAMP
     }).then(function() {
-      $scope.meetingname = '';
+      $scope.meetingname='';
     });
   }; //addmeeting
+
+
 }); //MeetingsController
