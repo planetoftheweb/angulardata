@@ -12,7 +12,14 @@ myApp.factory('Authentication', function($firebase,
         email: user.email,
         password: user.password
       }); //authWithPassword
-    } //login
+    }, //login
+
+    register: function(user) {
+      return auth.$createUser({
+        email: user.email,
+        password: user.password
+      });
+    } //register
 
   }; //myObject
   return myObject;

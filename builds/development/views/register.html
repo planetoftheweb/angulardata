@@ -6,6 +6,8 @@
     <h1>Register</h1>
     <p>To access site features</p>
 
+    <p class="error formerror" ng-show="message">{{ message }}</p>
+
     <input type="firstname" name="firstname" placeholder="First Name"
       ng-model="user.firstname" ng-required="true">
     <p class="error validationerror"
