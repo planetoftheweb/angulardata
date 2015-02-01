@@ -6,10 +6,19 @@ myApp.controller('MeetingsController',
 
   var meetingsInfo = $firebase(ref);
   var meetingsObj = meetingsInfo.$asObject();
+  var meetingsArray = meetingsInfo.$asArray();
 
   meetingsObj.$loaded().then(function(data) {
     $scope.meetings = data;
   }); //make sure meetings data is loaded
+
+  meetingsArray.$loaded(function(data) {
+    $rootScope.howManyMeetings = meetingsArray.length;
+  });
+
+  meetingsArray.$watch(function(data) {
+    $rootScope.howManyMeetings = meetingsArray.length;
+  });
 
 
   $scope.addMeeting = function() {
@@ -23,7 +32,7 @@ myApp.controller('MeetingsController',
 
   $scope.deleteMeeting = function(key) {
     meetingsInfo.$remove(key);
-  } //deleteMeeting
+  }; //deleteMeeting
 
 
 }); //MeetingsController
