@@ -24,6 +24,10 @@ myApp.factory('Authentication', function($firebase,
       }); //authWithPassword
     }, //login
 
+    logout: function(user) {
+      return auth.$unauth();
+    }, //login
+
     register: function(user) {
       return auth.$createUser({
         email: user.email,
