@@ -9,6 +9,9 @@ myApp.controller('CheckInsController', function($scope,
     $scope.whichuser + "/meetings/" + 
     $scope.whichmeeting + '/checkins');
 
+  var checkistList = $firebase(ref).$asArray();
+  $scope.checkins = checkistList;
+
   $scope.addCheckin = function() {
     var checkinsObj = $firebase(ref);
 
@@ -20,7 +23,7 @@ myApp.controller('CheckInsController', function($scope,
     };
 
     checkinsObj.$push(myData).then(function() {
-      $location.path('/checkins/' + scope.whichuser + '/' +
+      $location.path('/checkins/' + $scope.whichuser + '/' +
         $scope.whichmeeting + '/checkinsList');
     });//checkinsObj
   }; //addCheckin
