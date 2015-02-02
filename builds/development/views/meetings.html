@@ -20,6 +20,10 @@
       ng-click="deleteMeeting(key)">
     <span>Delete this meeting</span></button>
 
+    <a class="btn btn-list tooltip" 
+      ng-href="#/checkins/{{currentUser.regUser}}/{{key}}/checkinsList">
+      <span>View list of checked in users</span></a>
+
     <a class="btn btn-checkin tooltip" 
       ng-href="#/checkins/{{currentUser.regUser}}/{{key}}">
       <span>Go to check-in URL</span></a>
