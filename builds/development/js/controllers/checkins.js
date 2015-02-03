@@ -13,8 +13,8 @@ myApp.controller('CheckInsController', function($scope,
     $scope.whichuser + "/meetings/" + 
     $scope.whichmeeting + '/checkins');
 
-  var checkistList = $firebase(ref).$asArray();
-  $scope.checkins = checkistList;
+  var checkinsList = $firebase(ref).$asArray();
+  $scope.checkins = checkinsList;
 
   $scope.addCheckin = function() {
     var checkinsObj = $firebase(ref);
@@ -31,6 +31,12 @@ myApp.controller('CheckInsController', function($scope,
         $scope.whichmeeting + '/checkinsList');
     });//checkinsObj
   }; //addCheckin
+
+
+  $scope.pickRandom = function() {
+    var whichRecord = Math.round(Math.random() * checkinsList.length);
+    $scope.recordId = checkinsList.$keyAt(whichRecord);
+  }; //pick winner
 
   $scope.deleteCheckin = function(id) {
     var record = $firebase(ref);
