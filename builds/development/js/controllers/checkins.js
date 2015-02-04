@@ -53,4 +53,20 @@ myApp.controller('CheckInsController', function($scope,
     }
   }; //showLove
 
+  $scope.giveLove = function(myItem, myGift) {
+    var refLove = new Firebase(FIREBASE_URL + '/users/'+
+      $scope.whichuser + '/meetings/' +
+      $scope.whichmeeting + '/checkins/' + myItem.$id +
+      '/awards');
+    var checkinsObj = $firebase(refLove);
+
+    var myData = {
+      name: myGift,
+      date: Firebase.ServerValue.TIMESTAMP
+    };
+
+    checkinsObj.$push(myData);
+  }; //giveLove
+
+
 }); //CheckInsController
