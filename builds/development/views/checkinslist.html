@@ -42,6 +42,7 @@
       <div class="checkin">
         <div class="buttons" ng-show="currentUser">
           <button class="btn btn-delete tooltip"
+            confirmation-needed = "Are you sure you want to delete this checkin?"
             ng-click="deleteCheckin(checkin.$id)">
           <span>Delete this check-in</span></button>
           <button class="btn btn-love tooltip"
@@ -72,6 +73,7 @@
               <div class="award">{{award.name}}
                 <div class="buttons" ng-show="currentUser">
                   <button class="btn btn-delete tooltip"
+                    confirmation-needed = "Are you sure you want to delete this award?"
                     ng-click="deleteLove(checkin.$id,key)">
                     <span>Delete this award</span></button>
                 </div><!-- buttons -->
