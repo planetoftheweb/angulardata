@@ -43,4 +43,14 @@ myApp.controller('CheckInsController', function($scope,
     record.$remove(id);
   }; //deleteCheckin
 
+  $scope.showLove = function(myItem) {
+    myItem.show = !myItem.show;
+
+    if(myItem.userState == 'expanded') {
+      myItem.userState = '';
+    } else {
+      myItem.userState = 'expanded';
+    }
+  }; //showLove
+
 }); //CheckInsController
