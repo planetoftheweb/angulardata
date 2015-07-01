@@ -1,9 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute',
-'firebase', 'appControllers'])
+'firebase'])
 .constant('FIREBASE_URL', 'https://attendanceldcapp.firebaseio.com/');
-
-var appControllers = angular.module('appControllers',
-  ['firebase']);
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$routeChangeError',
