@@ -1,5 +1,4 @@
-myApp.factory('Authentication', function($firebase, 
-  $firebaseAuth, $rootScope, $routeParams, $location, FIREBASE_URL) {
+myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $firebaseObject, $rootScope, $routeParams, $location, FIREBASE_URL) {
 
   var ref = new Firebase(FIREBASE_URL);
   var auth = $firebaseAuth(ref);
@@ -7,8 +6,19 @@ myApp.factory('Authentication', function($firebase,
   auth.$onAuth(function(authUser) {
     if (authUser) {
       var ref = new Firebase(FIREBASE_URL + '/users/' + authUser.uid);
-      var user = $firebase(ref).$asObject();
+      var meetingsRef = new Firebase(FIREBASE_URL + '/users/' + authUser.uid + '/meetings');
+      var user = $firebaseObject(ref);
+      var meetingsArray = $firebaseArray(meetingsRef);
       $rootScope.currentUser = user;
+
+      meetingsArray.$loaded(function(data) {
+        $rootScope.howManyMeetings = meetingsArray.length;
+      });
+
+      meetingsArray.$watch(function(data) {
+        $rootScope.howManyMeetings = meetingsArray.length;
+      });
+
     } else {
       $rootScope.currentUser = '';
     }
@@ -34,7 +44,7 @@ myApp.factory('Authentication', function($firebase,
         password: user.password
       }).then(function(regUser) {
         var ref = new Firebase(FIREBASE_URL+'users');
-        var firebaseUsers = $firebase(ref);
+        var firebaseUsers = $firebaseObject(ref);
 
         var userInfo = {
           date : Firebase.ServerValue.TIMESTAMP,

@@ -1,30 +1,32 @@
 myApp.controller('MeetingsController',
-  function($scope, $rootScope, $firebase,
+  function($scope, $rootScope, $firebaseAuth, $firebaseArray, Authentication,
     CountMeetings, FIREBASE_URL) {
 
-  var ref = new Firebase(FIREBASE_URL + '/users/' + 
-    $rootScope.currentUser.$id + '/meetings');
+  var ref = new Firebase(FIREBASE_URL);
+  var auth = $firebaseAuth(ref);
 
-  var meetingsInfo = $firebase(ref);
-  var meetingsObj = meetingsInfo.$asObject();
+  auth.$onAuth(function(authUser) {
+    if (authUser) {
+      var meetingsRef = new Firebase(FIREBASE_URL + '/users/' +
+        $rootScope.currentUser.$id + '/meetings');
+      var meetingsInfo = $firebaseArray(meetingsRef);
 
-  meetingsObj.$loaded().then(function(data) {
-    $scope.meetings = data;
-  }); //make sure meetings data is loaded
+        meetingsInfo.$loaded().then(function(data) {
+          $scope.meetings = data;
+        }); //make sure meetings data is loaded
 
+        $scope.addMeeting = function() {
+          meetingsInfo.$add({
+            name: $scope.meetingname,
+            date: Firebase.ServerValue.TIMESTAMP
+          }).then(function() {
+            $scope.meetingname='';
+          });
+        }; //addmeeting
 
-  $scope.addMeeting = function() {
-    meetingsInfo.$push({
-      name: $scope.meetingname,
-      date: Firebase.ServerValue.TIMESTAMP
-    }).then(function() {
-      $scope.meetingname='';
-    });
-  }; //addmeeting
-
-  $scope.deleteMeeting = function(key) {
-    meetingsInfo.$remove(key);
-  }; //deleteMeeting
-
-
+        $scope.deleteMeeting = function(key) {
+          meetingsInfo.$remove(key);
+        }; //deleteMeeting
+    }
+  });
 }); //MeetingsController

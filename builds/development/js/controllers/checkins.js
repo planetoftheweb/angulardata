@@ -1,5 +1,5 @@
-myApp.controller('CheckInsController', function($scope, 
-  $rootScope, $firebase, $routeParams, 
+myApp.controller('CheckInsController', function($scope,
+  $rootScope, $firebaseArray, $firebaseObject, $routeParams,
   $location, Authentication, CountMeetings, FIREBASE_URL) {
 
   $scope.whichmeeting = $routeParams.mId;
@@ -10,14 +10,14 @@ myApp.controller('CheckInsController', function($scope,
   $scope.query='';
 
   var ref = new Firebase(FIREBASE_URL + "/users/" +
-    $scope.whichuser + "/meetings/" + 
+    $scope.whichuser + "/meetings/" +
     $scope.whichmeeting + '/checkins');
 
-  var checkinsList = $firebase(ref).$asArray();
+  var checkinsList = $firebaseArray(ref);
   $scope.checkins = checkinsList;
 
   $scope.addCheckin = function() {
-    var checkinsObj = $firebase(ref);
+    var checkinsObj = $firebaseArray(ref);
 
     var myData = {
       firstname: $scope.user.firstname,
@@ -26,7 +26,7 @@ myApp.controller('CheckInsController', function($scope,
       date: Firebase.ServerValue.TIMESTAMP
     };
 
-    checkinsObj.$push(myData).then(function() {
+    checkinsObj.$add(myData).then(function() {
       $location.path('/checkins/' + $scope.whichuser + '/' +
         $scope.whichmeeting + '/checkinsList');
     });//checkinsObj
@@ -39,7 +39,7 @@ myApp.controller('CheckInsController', function($scope,
   }; //pick winner
 
   $scope.deleteCheckin = function(id) {
-    var record = $firebase(ref);
+    var record = $firebaseObject(ref);
     record.$remove(id);
   }; //deleteCheckin
 
@@ -58,14 +58,14 @@ myApp.controller('CheckInsController', function($scope,
       $scope.whichuser + '/meetings/' +
       $scope.whichmeeting + '/checkins/' + myItem.$id +
       '/awards');
-    var checkinsObj = $firebase(refLove);
+    var checkinsArray = $firebaseArray(refLove);
 
     var myData = {
       name: myGift,
       date: Firebase.ServerValue.TIMESTAMP
     };
 
-    checkinsObj.$push(myData);
+    checkinsArray.$add(myData);
   }; //giveLove
 
   $scope.deleteLove = function(checkinId, award) {
@@ -73,7 +73,7 @@ myApp.controller('CheckInsController', function($scope,
       $scope.whichuser + '/meetings/' +
       $scope.whichmeeting + '/checkins/' + checkinId +
       '/awards');
-    var record = $firebase(refLove);
+    var record = $firebaseObject(refLove);
     record.$remove(award);
   }; //deleteLove
 

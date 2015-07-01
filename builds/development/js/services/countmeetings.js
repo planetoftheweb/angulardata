@@ -1,19 +1,19 @@
-myApp.factory('CountMeetings', function($firebase,
+myApp.factory('CountMeetings', function($firebaseArray,
   $rootScope, FIREBASE_URL) {
 
-  var ref = new Firebase(FIREBASE_URL + '/users/' + 
+  $rootScope.currentUser.$watch(function()  {
+    var ref = new Firebase(FIREBASE_URL + '/users/' +
     $rootScope.currentUser.$id + '/meetings');
+    var meetingsArray = $firebaseArray(ref);
 
-  var meetingsInfo = $firebase(ref);
+    meetingsArray.$loaded(function(data) {
+      $rootScope.howManyMeetings = meetingsArray.length;
+    });
 
-  var meetingsArray = meetingsInfo.$asArray();
+    meetingsArray.$watch(function(data) {
+      $rootScope.howManyMeetings = meetingsArray.length;
+    });
 
-  meetingsArray.$loaded(function(data) {
-    $rootScope.howManyMeetings = meetingsArray.length;
-  });
-
-  meetingsArray.$watch(function(data) {
-    $rootScope.howManyMeetings = meetingsArray.length;
   });
 
   return true;

@@ -6,8 +6,8 @@
     ng-submit="addMeeting()"
     novalidate>
     <div class="inputwrapper">
-      <input type="text" name="meetingname" 
-      placeholder="Meeting name" 
+      <input type="text" name="meetingname"
+      placeholder="Meeting name"
         ng-model="meetingname" ng-required="true">
     </div>
     <button type="submit" class="btn"
@@ -20,12 +20,12 @@
       ng-click="deleteMeeting(key)">
     <span>Delete this meeting</span></button>
 
-    <a class="btn btn-list tooltip" 
-      ng-href="#/checkins/{{currentUser.regUser}}/{{key}}/checkinsList">
+    <a class="btn btn-list tooltip"
+      ng-href="#/checkins/{{currentUser.regUser}}/{{meeting.$id}}/checkinsList">
       <span>View list of checked in users</span></a>
 
-    <a class="btn btn-checkin tooltip" 
-      ng-href="#/checkins/{{currentUser.regUser}}/{{key}}">
+    <a class="btn btn-checkin tooltip"
+      ng-href="#/checkins/{{currentUser.regUser}}/{{meeting.$id}}">
       <span>Go to check-in URL</span></a>
 
     <span class="text">{{meeting.name}}</span>
