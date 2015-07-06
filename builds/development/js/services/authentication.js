@@ -44,7 +44,7 @@ myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $fireba
         password: user.password
       }).then(function(regUser) {
         var ref = new Firebase(FIREBASE_URL+'users');
-        var firebaseUsers = $firebaseObject(ref);
+        var firebaseUsers = $firebaseArray(ref);
 
         var userInfo = {
           date : Firebase.ServerValue.TIMESTAMP,
@@ -54,7 +54,7 @@ myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $fireba
           email: user.email
         }; //user info
 
-        firebaseUsers.$set(regUser.uid, userInfo);
+        firebaseUsers.$add(userInfo);
       }); //promise
     }, //register
 
