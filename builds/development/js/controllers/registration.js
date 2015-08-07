@@ -5,6 +5,7 @@ myApp.controller('RegistrationController',
   var auth = $firebaseAuth(ref);
   
   $scope.login = function() {
+    consoel.log($scope.user.email);
     Authentication.login($scope.user)
     .then(function(user) {
       $location.path('/meetings');
@@ -21,9 +22,9 @@ myApp.controller('RegistrationController',
       }).catch(function(error) {
         $scope.message = error.message;
       });
-      $scope.name='Chi';
+    /*  $scope.name='Chi';
       $scope.$on('$viewContentLoaded',function(){
-console.log($scope.myform);
+console.log($scope.myform);*/
       });
   }; //register
 
