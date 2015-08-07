@@ -22,9 +22,9 @@ myApp.controller('RegistrationController',
       }).catch(function(error) {
         $scope.message = error.message;
       });
-      $scope.name='Chi';/*
+      $scope.name='Chi';
       $scope.$on('$viewContentLoaded',function(){
-console.log($scope.myform);*/
+console.log($scope.myform);
       });
   }; //register
 
