@@ -10,6 +10,7 @@ myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $fireba
       var user = $firebaseObject(ref);
       var meetingsArray = $firebaseArray(meetingsRef);
       $rootScope.currentUser = user;
+      console.log($rootScope.currentUser);
 
       meetingsArray.$loaded(function(data) {
         $rootScope.howManyMeetings = meetingsArray.length;
