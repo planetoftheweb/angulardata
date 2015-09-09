@@ -1,5 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute',
-'firebase'])
+var myApp = angular.module('myApp', ['ngRoute', 'firebase'])
 .constant('FIREBASE_URL', 'https://attendanceldcapp.firebaseio.com/');
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
