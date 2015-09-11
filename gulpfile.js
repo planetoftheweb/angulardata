@@ -3,15 +3,15 @@ var gulp = require('gulp'),
   webserver = require('gulp-webserver');
 
 gulp.task('js', function() {
-  gulp.src('builds/development/js/**/*')
+  gulp.src('builds/development/js/**/*');
 });
 
 gulp.task('html', function() {
-  gulp.src('builds/development/*.html')
+  gulp.src('builds/development/*.html');
 });
 
 gulp.task('css', function() {
-  gulp.src('builds/development/css/*.css')
+  gulp.src('builds/development/css/*.css');
 });
 
 gulp.task('watch', function() {

@@ -1,4 +1,10 @@
-myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $firebaseObject, $rootScope, $routeParams, $location, FIREBASE_URL) {
+myApp.factory('Authentication', [
+  '$firebaseAuth', '$firebaseArray',
+  '$firebaseObject', '$rootScope',
+  '$routeParams', '$location', 'FIREBASE_URL',
+  function( $firebaseAuth, $firebaseArray,
+  $firebaseObject, $rootScope,
+  $routeParams, $location, FIREBASE_URL) {
 
   var ref = new Firebase(FIREBASE_URL);
   var auth = $firebaseAuth(ref);
@@ -44,18 +50,14 @@ myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $fireba
         email: user.email,
         password: user.password
       }).then(function(regUser) {
-        var ref = new Firebase(FIREBASE_URL+'users');
-        var firebaseUsers = $firebaseArray(ref);
-
-        var userInfo = {
+        var ref = new Firebase(FIREBASE_URL + 'users')
+        .child(regUser.uid).set({
           date : Firebase.ServerValue.TIMESTAMP,
           regUser : regUser.uid,
           firstname: user.firstname,
           lastname : user.lastname,
           email: user.email
-        }; //user info
-
-        firebaseUsers.$add(userInfo);
+        }); //user info
       }); //promise
     }, //register
 
@@ -70,4 +72,4 @@ myApp.factory('Authentication', function( $firebaseAuth, $firebaseArray, $fireba
 
   }; //myObject
   return myObject;
-}); //myApp Factory
+}]); //myApp Factory

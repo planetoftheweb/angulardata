@@ -1,4 +1,6 @@
-myApp.factory('CountMeetings', function($firebaseArray,
+myApp.factory('CountMeetings', [
+  '$firebaseArray', '$rootScope', 'FIREBASE_URL',
+  function($firebaseArray,
   $rootScope, FIREBASE_URL) {
 
   $rootScope.currentUser.$watch(function()  {
@@ -13,9 +15,6 @@ myApp.factory('CountMeetings', function($firebaseArray,
     meetingsArray.$watch(function(data) {
       $rootScope.howManyMeetings = meetingsArray.length;
     });
-
-  });
-
+  }); //watch for changes
   return true;
-
-}); //CountMeetings
+}]); //CountMeetings

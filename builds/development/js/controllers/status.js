@@ -1,4 +1,5 @@
-myApp.controller('StatusController', 
+myApp.controller('StatusController', [
+	'$scope', '$location', 'Authentication',
 	function($scope, $location, Authentication) {
 
   $scope.logout = function() {
@@ -6,4 +7,4 @@ myApp.controller('StatusController',
     $location.path('/login');
   }; //logout
 
-}); //StatusController
+}]); //StatusController
