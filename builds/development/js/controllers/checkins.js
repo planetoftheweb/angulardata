@@ -1,5 +1,8 @@
-myApp.controller('CheckInsController', function($scope,
-  $rootScope, $firebaseArray, $firebaseObject, $routeParams,
+myApp.controller('CheckInsController', [
+  '$scope', '$rootScope', '$firebaseArray',
+  '$firebaseObject', '$routeParams',
+  '$location', 'Authentication', 'CountMeetings', 'FIREBASE_URL',
+  function($scope, $rootScope, $firebaseArray, $firebaseObject, $routeParams,
   $location, Authentication, CountMeetings, FIREBASE_URL) {
 
   $scope.whichmeeting = $routeParams.mId;
@@ -77,4 +80,4 @@ myApp.controller('CheckInsController', function($scope,
     record.$remove(award);
   }; //deleteLove
 
-}); //CheckInsController
+}]); //CheckInsController

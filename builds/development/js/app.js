@@ -1,6 +1,6 @@
-var myApp = angular.module('myApp', ['ngRoute',
-'firebase'])
-.constant('FIREBASE_URL', 'https://adata2.firebaseio.com/');
+var myApp = angular.module('myApp',
+  ['ngRoute', 'firebase'])
+  .constant('FIREBASE_URL', 'https://adata2.firebaseio.com/');
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('$routeChangeError',
@@ -10,9 +10,10 @@ myApp.run(['$rootScope', '$location', function($rootScope, $location) {
       $location.path('/login');
     }
   });
-}]);
+}]); //Run myApp
 
-myApp.config(['$routeProvider', function($routeProvider) {
+myApp.config(['$routeProvider',
+  function($routeProvider) {
   $routeProvider.
     when('/login', {
       templateUrl: 'views/login.html',
@@ -36,7 +37,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
       resolve : {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();
-        }
+        } //currentAuth
       }
     }).
     otherwise({

@@ -1,6 +1,8 @@
-myApp.controller('MeetingsController',
-  function($scope, $rootScope, $firebaseAuth, $firebaseArray, Authentication,
-    CountMeetings, FIREBASE_URL) {
+myApp.controller('MeetingsController', ['$scope', '$rootScope',
+  '$firebaseAuth', '$firebaseArray', 'Authentication',
+  'CountMeetings', 'FIREBASE_URL', 
+  function($scope, $rootScope, $firebaseAuth, $firebaseArray,
+  Authentication, CountMeetings, FIREBASE_URL) {
 
   var ref = new Firebase(FIREBASE_URL);
   var auth = $firebaseAuth(ref);
@@ -27,6 +29,7 @@ myApp.controller('MeetingsController',
         $scope.deleteMeeting = function(key) {
           meetingsInfo.$remove(key);
         }; //deleteMeeting
-    }
-  });
-}); //MeetingsController
+    } // If user is authenticated
+  }); //onAuth
+
+}]); //MeetingsController
