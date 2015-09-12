@@ -441,6 +441,11 @@ ul.awardslist li .btn-delete {
   border: none;
 }
 
+ul.awardslist li .award {
+  padding-right: 15px;
+}
+
+
 nav {
   width: 100%;
   background: #EFC94C;

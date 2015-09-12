@@ -41,25 +41,28 @@ myApp.controller('CheckInsController', [
     $scope.recordId = checkinsList.$keyAt(whichRecord);
   }; //pick winner
 
-  $scope.deleteCheckin = function(id) {
-    var record = $firebaseObject(ref);
-    record.$remove(id);
+  $scope.deleteCheckin = function(myCheckin) {
+    var refDel = new Firebase(FIREBASE_URL + "/users/" +
+      $scope.whichuser + "/meetings/" +
+      $scope.whichmeeting + '/checkins/' + myCheckin);
+    var record = $firebaseObject(refDel);
+    record.$remove(myCheckin);
   }; //deleteCheckin
 
-  $scope.showLove = function(myItem) {
-    myItem.show = !myItem.show;
+  $scope.showLove = function(myCheckin) {
+    myCheckin.show = !myCheckin.show;
 
-    if(myItem.userState == 'expanded') {
-      myItem.userState = '';
+    if(myCheckin.userState == 'expanded') {
+      myCheckin.userState = '';
     } else {
-      myItem.userState = 'expanded';
+      myCheckin.userState = 'expanded';
     }
   }; //showLove
 
-  $scope.giveLove = function(myItem, myGift) {
+  $scope.giveLove = function(myCheckin, myGift) {
     var refLove = new Firebase(FIREBASE_URL + '/users/'+
       $scope.whichuser + '/meetings/' +
-      $scope.whichmeeting + '/checkins/' + myItem.$id +
+      $scope.whichmeeting + '/checkins/' + myCheckin.$id +
       '/awards');
     var checkinsArray = $firebaseArray(refLove);
 

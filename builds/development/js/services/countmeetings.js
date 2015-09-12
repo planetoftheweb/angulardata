@@ -3,7 +3,7 @@ myApp.factory('CountMeetings', [
   function($firebaseArray,
   $rootScope, FIREBASE_URL) {
 
-  if ($rootScope.currentUser) {
+  if ($rootScope.currentUser!==undefined) {
     var ref = new Firebase(FIREBASE_URL + '/users/' +
     $rootScope.currentUser.$id + '/meetings');
     var meetingsArray = $firebaseArray(ref);
@@ -16,6 +16,7 @@ myApp.factory('CountMeetings', [
       $rootScope.howManyMeetings = meetingsArray.length;
     });
   }
+
 
   return true;
 }]); //CountMeetings

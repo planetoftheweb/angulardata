@@ -62,7 +62,7 @@ myApp.factory('Authentication',
           lastname : user.lastname,
           email: user.email
         }); //user info
-        login(user);
+        myObject.login(user);
       }).catch(function(error) {
         $rootScope.message = error.message;
       }); //promise

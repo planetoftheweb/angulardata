@@ -72,7 +72,7 @@
             <li class="cf" ng-repeat="(key,award) in checkin.awards">
               <div class="award">{{award.name}}
                 <div class="buttons" ng-show="currentUser">
-                  <button class="btn btn-delete tooltip"
+                  <button class="btn btn-delete award tooltip"
                     confirmation-needed = "Are you sure you want to delete this award?"
                     ng-click="deleteLove(checkin.$id,key)">
                     <span>Delete this award</span></button>
