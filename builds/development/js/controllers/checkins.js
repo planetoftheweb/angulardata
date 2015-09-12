@@ -38,7 +38,6 @@ myApp.controller('CheckInsController', [
 
   $scope.pickRandom = function() {
     var whichRecord = Math.round(Math.random() * (checkinsList.length - 1));
-    console.log(whichRecord);
     $scope.recordId = checkinsList.$keyAt(whichRecord);
   }; //pick winner
 

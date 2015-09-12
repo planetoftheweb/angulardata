@@ -3,7 +3,7 @@
   <p>Here's a list of your latest check-ins</p>
 
   <div class="search cf">
-    <H2>Search Check-ins</H2>
+    <h2>Search Check-ins</h2>
     <input type="text" ng-model="query" placeholder="Search for Users">
 
     <div class="formgroup cf">
@@ -18,19 +18,18 @@
     <div class="formgroup cf">
       <input id="dirascending" type="radio" ng-model="direction"
         name="direction">
-      <label for=dirascending>asc</label>
+      <label for="dirascending">asc</label>
       <input id="dirdescending" type="radio" ng-model="direction"
         name="direction" value="reverse">
-      <label for=dirdescending>desc</label>
+      <label for="dirdescending">desc</label>
+
+      <div ng-show="currentUser" class="buttons cf">
+        <button ng-hide="recordId" class="btn btn-pick"
+          ng-click="pickRandom()">Pick Random</button>
+        <button ng-show="recordId" type="button" class="btn btn-pick"
+          ng-click="recordId=''">Reset</button>
+      </div><!-- buttons -->
     </div><!-- formgroup -->
-
-    <div ng-show="currentUser" class="buttons cf">
-      <button ng-hide="recordId" class="btn btn-pick"
-        ng-click="pickRandom()">Pick Random</button>
-
-      <button ng-show="recordId" type="button" class="btn btn-pick"
-        ng-click="recordId=''">Reset</button>
-    </div><!-- buttons -->
 
   </div><!-- search -->
 
