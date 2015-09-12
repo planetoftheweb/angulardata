@@ -1,5 +1,5 @@
-myApp.factory('Authentication', [
-  '$firebaseAuth', '$firebaseArray',
+myApp.factory('Authentication', 
+  ['$firebaseAuth', '$firebaseArray',
   '$firebaseObject', '$rootScope',
   '$routeParams', '$location', 'FIREBASE_URL',
   function( $firebaseAuth, $firebaseArray,
@@ -16,7 +16,6 @@ myApp.factory('Authentication', [
       var user = $firebaseObject(ref);
       var meetingsArray = $firebaseArray(meetingsRef);
       $rootScope.currentUser = user;
-      console.log($rootScope.currentUser);
 
       meetingsArray.$loaded(function(data) {
         $rootScope.howManyMeetings = meetingsArray.length;
@@ -38,6 +37,10 @@ myApp.factory('Authentication', [
       return auth.$authWithPassword({
         email: user.email,
         password: user.password
+      }).then(function(user) {
+        $location.path('/meetings');
+      }).catch(function(error) {
+        $rootScope.message = error.message;
       }); //authWithPassword
     }, //login
 
@@ -50,7 +53,8 @@ myApp.factory('Authentication', [
         email: user.email,
         password: user.password
       }).then(function(regUser) {
-        var ref = new Firebase(FIREBASE_URL + 'users')
+        var ref = new Firebase(FIREBASE_URL +
+         'users')
         .child(regUser.uid).set({
           date : Firebase.ServerValue.TIMESTAMP,
           regUser : regUser.uid,
@@ -58,6 +62,9 @@ myApp.factory('Authentication', [
           lastname : user.lastname,
           email: user.email
         }); //user info
+        login(user);
+      }).catch(function(error) {
+        $rootScope.message = error.message;
       }); //promise
     }, //register
 

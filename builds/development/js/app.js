@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp',
   ['ngRoute', 'firebase'])
-  .constant('FIREBASE_URL', 'https://adata2.firebaseio.com/');
+  .constant('FIREBASE_URL',
+    'https://adata2.firebaseio.com/');
 
 myApp.run(['$rootScope', '$location', 
   function($rootScope, $location) {

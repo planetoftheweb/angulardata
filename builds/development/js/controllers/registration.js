@@ -1,5 +1,5 @@
-myApp.controller('RegistrationController', [
-  '$scope', '$firebaseAuth', '$location', 
+myApp.controller('RegistrationController', 
+  ['$scope', '$firebaseAuth', '$location', 
   'Authentication', 'FIREBASE_URL',
   function($scope, $firebaseAuth, $location,
     Authentication, FIREBASE_URL) {
@@ -8,23 +8,11 @@ myApp.controller('RegistrationController', [
   var auth = $firebaseAuth(ref);
   
   $scope.login = function() {
-    Authentication.login($scope.user)
-    .then(function(user) {
-      console.log('login');
-      $location.path('/meetings');
-    }).catch(function(error) {
-      $scope.message = error.message;
-    });
+    Authentication.login($scope.user);
   }; //login
 
   $scope.register = function() {
-    Authentication.register($scope.user)
-      .then(function(user) {
-        Authentication.login($scope.user);
-        $location.path('/meetings');
-      }).catch(function(error) {
-        $scope.message = error.message;
-      });
+    Authentication.register($scope.user);
   }; //register
 
 }]); //RegistrationController
