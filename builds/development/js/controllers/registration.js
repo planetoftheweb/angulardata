@@ -1,18 +1,17 @@
-myApp.controller('RegistrationController', 
-  ['$scope', '$firebaseAuth', '$location', 
-  'Authentication', 'FIREBASE_URL',
-  function($scope, $firebaseAuth, $location,
-    Authentication, FIREBASE_URL) {
-
-  var ref = new Firebase(FIREBASE_URL);
-  var auth = $firebaseAuth(ref);
+myApp.controller('RegistrationController',
+  ['$scope', 'Authentication',
+  function($scope, Authentication) {
   
   $scope.login = function() {
     Authentication.login($scope.user);
   }; //login
 
+  $scope.logout = function() {
+    Authentication.logout();
+  }; //logout
+
   $scope.register = function() {
     Authentication.register($scope.user);
-  }; //register
+  }; // register
 
-}]); //RegistrationController
+}]); // Controller
