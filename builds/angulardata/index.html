@@ -16,12 +16,8 @@
 
   <script src="js/app.js"></script>
   <script src="js/services/authentication.js"></script>
-
   <script src="js/controllers/registration.js"></script>
-  <script src="js/controllers/checkins.js"></script>
-  <script src="js/controllers/meetings.js"></script>
-
-  <script src="js/directives/confirm.js"></script>
+  <script src="js/controllers/success.js"></script>
 
 </head>
 <body>
@@ -31,7 +27,7 @@
 <div class="page">
 
   <div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
-    <span class="userinfo">Hi {{ currentUser.firstname}}</span>
+    <span class="userinfo">Hi {{ currentUser.firstname}}</span> 
     <a ng-href="#/login" ng-click="logout()">logout</a>
   </div>
 
