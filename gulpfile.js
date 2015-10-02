@@ -3,26 +3,26 @@ var gulp = require('gulp'),
   webserver = require('gulp-webserver');
 
 gulp.task('js', function() {
-  gulp.src('builds/development/js/**/*');
+  gulp.src('builds/angulardata/js/**/*');
 });
 
 gulp.task('html', function() {
-  gulp.src('builds/development/*.html');
+  gulp.src('builds/angulardata/*.html');
 });
 
 gulp.task('css', function() {
-  gulp.src('builds/development/css/*.css');
+  gulp.src('builds/angulardata/css/*.css');
 });
 
 gulp.task('watch', function() {
-  gulp.watch('builds/development/js/**/*', ['js']);
-  gulp.watch('builds/development/css/*.css', ['css']);
-  gulp.watch(['builds/development/*.html',
-    'builds/development/views/*.html'], ['html']);
+  gulp.watch('builds/angulardata/js/**/*', ['js']);
+  gulp.watch('builds/angulardata/css/*.css', ['css']);
+  gulp.watch(['builds/angulardata/*.html',
+    'builds/angulardata/views/*.html'], ['html']);
 });
 
 gulp.task('webserver', function() {
-  gulp.src('builds/development/')
+  gulp.src('builds/angulardata/')
     .pipe(webserver({
       livereload: true,
       open: true
