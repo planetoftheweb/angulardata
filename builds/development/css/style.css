@@ -603,6 +603,24 @@ nav li a:hover {
           transform: translateY(0px);
 }
 
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: #777;
+  border-radius: 10px;
+}
+.badge:empty {
+  display: none;
+}
+
 .checkinslist { margin-top: 20px; }
 .checkinslist h1 { color: #2D8BCF; }
 .checkin h2 {

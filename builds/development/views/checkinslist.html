@@ -1,4 +1,4 @@
-<div class="checkinslist">
+<div class="card checkinslist">
   <h1>Check-ins</h1>
   <p>Here's a list of your latest check-ins</p>
 
@@ -34,8 +34,8 @@
   </div><!-- search -->
 
   <ul class="userlist cf">
-    <li ng-class="checkin.userState" 
-      ng-repeat="checkin in checkins | 
+    <li ng-class="checkin.userState"
+      ng-repeat="checkin in checkins |
       orderBy: order:direction | filter: { $id: recordId,
       $: query}">
       <div class="checkin">
@@ -77,7 +77,7 @@
                     <span>Delete this award</span></button>
                 </div><!-- buttons -->
               </div><!-- award -->
-            </li>            
+            </li>
           </ul>
         </div><!-- showcheckins -->
       </div><!-- checkin -->
