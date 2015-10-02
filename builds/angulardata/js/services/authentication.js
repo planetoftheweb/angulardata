@@ -1,4 +1,4 @@
-myApp.factory('Authentication', 
+myApp.factory('Authentication',
   ['$rootScope', '$firebaseAuth', '$firebaseObject',
   '$location', 'FIREBASE_URL',
   function($rootScope, $firebaseAuth, $firebaseObject,
@@ -18,7 +18,7 @@ myApp.factory('Authentication',
   });
 
 
-  return {
+  var myObject = {
     login: function(user) {
       auth.$authWithPassword({
         email: user.email,
@@ -53,12 +53,13 @@ myApp.factory('Authentication',
           email:  user.email
         }); //user info
 
-        $rootScope.message = "Hi " + user.firstname +
-        ", Thanks for registering";
+        myObject.login(user);
+
       }).catch(function(error) {
         $rootScope.message = error.message;
       }); // //createUser
     } // register
   };
 
+  return myObject;
 }]); //factory
