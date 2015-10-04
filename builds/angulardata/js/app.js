@@ -26,7 +26,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     }).
     when('/meetings', {
       templateUrl: 'views/meetings.html',
-      controller: 'SuccessController',
+      controller: 'MeetingsController',
       resolve: {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();

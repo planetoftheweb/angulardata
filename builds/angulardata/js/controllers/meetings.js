@@ -1,3 +1,3 @@
-myApp.controller('SuccessController', ['$scope', function($scope) {
-  $scope.message = "Success!!!";
+myApp.controller('MeetingsController', ['$scope', function($scope) {
+
 }]);
