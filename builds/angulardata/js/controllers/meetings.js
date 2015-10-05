@@ -11,8 +11,6 @@ myApp.controller('MeetingsController',
           $rootScope.currentUser.$id + '/meetings');
         var meetingsInfo = $firebaseArray(meetingsRef);
 
-        $scope.meetings = meetingsInfo;
-
         $scope.addMeeting = function() {
           meetingsInfo.$add({
             name: $scope.meetingname,
