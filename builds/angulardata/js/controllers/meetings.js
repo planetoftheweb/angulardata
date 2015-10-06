@@ -10,6 +10,7 @@ myApp.controller('MeetingsController',
         var meetingsRef = new Firebase(FIREBASE_URL + 'users/' +
           $rootScope.currentUser.$id + '/meetings');
         var meetingsInfo = $firebaseArray(meetingsRef);
+        $scope.meetings = meetingsInfo;
 
         $scope.addMeeting = function() {
           meetingsInfo.$add({
@@ -19,6 +20,11 @@ myApp.controller('MeetingsController',
             $scope.meetingname='';
           }); //promise
         }; // addMeeting
+
+        $scope.deleteMeeting = function(key) {
+          meetingsInfo.$remove(key);
+        }; // deleteMeeting
+
       } // User Authenticated
     }); // on Auth
 }]); //Controller
