@@ -15,6 +15,7 @@ myApp.controller('CheckInsController',
     $scope.order = "firstname";
     $scope.direction = null;
     $scope.query = '';
+    $scope.recordId='';
 
 
     $scope.addCheckin = function() {
@@ -39,5 +40,10 @@ myApp.controller('CheckInsController',
       var record = $firebaseObject(refDel);
       record.$remove(id);
     };
+
+    $scope.pickRandom = function() {
+      var whichRecord = Math.round(Math.random()* (checkinsList.length - 1));
+      $scope.recordId = checkinsList.$keyAt(whichRecord);
+    } //pick winner
 
 }]); //Controller    

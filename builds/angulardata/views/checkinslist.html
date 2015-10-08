@@ -14,7 +14,7 @@
       <option value="lastname">Last Name</option>
       <option value="data">Date</option>
     </select>
-  </div>
+  </div><!-- formgroup -->
 
   <div class="formgroup">
     <input id="dirascending" type="radio"
@@ -24,13 +24,22 @@
     <input id="dirdescending" type="radio"
       ng-model="direction" name="direction" value="reverse">
     <label for="dirdescending">desc</label>
+  </div><!-- formgroup -->
 
+  <div ng-show="currentUser" class="buttons cf">
+
+    <button ng-hide="recordId" class="btn btn-pick"
+      ng-click="pickRandom()">Pick Random</button>
+
+    <button ng-show="recordId" class="btn btn-pick"
+      ng-click="recordId=''">Reset</button>  
+    
   </div>
 
-</div>
+</div><!-- search -->
 
 <ul class="userlist cf">
-  <li ng-repeat="checkin in checkins | orderBy: order:direction | filter: query">
+  <li ng-repeat="checkin in checkins | orderBy: order:direction | filter: { $id: recordId, $: query }">
     <div class="checkin">
       <div class="buttons" ng-show="currentUser">
         <button class="btn btn-delete tooltip"
