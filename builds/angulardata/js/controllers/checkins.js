@@ -46,4 +46,14 @@ myApp.controller('CheckInsController',
       $scope.recordId = checkinsList.$keyAt(whichRecord);
     } //pick winner
 
+    $scope.showLove = function(myCheckin) {
+      myCheckin.show = !myCheckin.show;
+
+      if (myCheckin.userState == 'expanded') {
+        myCheckin.userState = '';
+      } else {
+        myCheckin.userState = 'expanded';
+      }
+    } // show love
+
 }]); //Controller    

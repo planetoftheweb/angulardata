@@ -224,7 +224,10 @@ input[type=radio] {
 
 .btn .btn-left { float: left; }
 .btn .btn-right { float: right; }
-.btn:hover { background-color: #DC322F; }
+.btn:focus, .btn:hover {
+  background-color: #DC322F;
+  outline: none;
+}
 
 .btn-list { background-image: url(../images/icons/icon_list.png); }
 .btn-checkin { background-color: #859835; background-image: url(../images/icons/icon_checkmark.png); }

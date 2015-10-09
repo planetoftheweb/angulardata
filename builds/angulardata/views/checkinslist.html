@@ -39,12 +39,16 @@
 </div><!-- search -->
 
 <ul class="userlist cf">
-  <li ng-repeat="checkin in checkins | orderBy: order:direction | filter: { $id: recordId, $: query }">
+  <li ng-class="checkin.userState" ng-repeat="checkin in checkins | orderBy: order:direction | filter: { $id: recordId, $: query }">
     <div class="checkin">
       <div class="buttons" ng-show="currentUser">
         <button class="btn btn-delete tooltip"
           ng-click="deleteCheckin(checkin.$id)">
           <span>Delete this check-in</span>
+        </button>
+        <button class="btn btn-love tooltip"
+          ng-click="showLove(checkin)">
+          <span>Show the love</span>
         </button>
       </div><!-- buttons -->
       <div class="info">
@@ -53,6 +57,15 @@
           {{ checkin.date | date: "MMM d, yy h:mm a" }}
         </div><!-- date -->
       </div><!-- info -->
+      <div class="showcheckins" ng-show="checkin.show">
+        <form class="cf"
+          ng-submit="giveLove(checkin, checkin.giftText)"
+          novalidate>
+          <input type="text" name="giftText" placeholder="What are you giving them?"
+          ng-model="checkin.giftText" ng-required="true">
+          <button type="submit" class="btn" ng-disabled="myform.$invalid">+</button>
+        </form>
+      </div><!-- showcheckins -->
     </div><!-- checkin -->
   </li>
 </ul>
