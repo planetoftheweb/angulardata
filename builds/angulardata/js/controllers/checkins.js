@@ -71,4 +71,14 @@ myApp.controller('CheckInsController',
       checkinsArray.$add(myData);
     }; //giveLove
 
+    $scope.deleteLove =function(checkinId, award) {
+      var refLove = new Firebase(FIREBASE_URL + 'users/' +
+        $scope.whichuser + '/meetings/' +
+        $scope.whichmeeting + '/checkins/' + checkinId +
+        '/awards');
+      var record = $firebaseObject(refLove);
+      record.$remove(award);
+    }; //deleteLove
+
+
 }]); //Controller    
