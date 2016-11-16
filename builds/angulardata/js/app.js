@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', 
+var myApp = angular.module('myApp',
   ['ngRoute', 'firebase']);
 
 myApp.run(['$rootScope', '$location', function($rootScope, $location) {
@@ -21,8 +21,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'RegistrationController'
     }).
     when('/success', {
-      templateUrl: 'views/success.html',
-      controller: 'SuccessController',
+      templateUrl: 'views/meetings.html',
+      controller: 'MeetingsController',
       resolve: {
         currentAuth: function(Authentication) {
           return Authentication.requireAuth();
