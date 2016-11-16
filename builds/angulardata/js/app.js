@@ -20,7 +20,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     }).
-    when('/success', {
+    when('/meetings', {
       templateUrl: 'views/meetings.html',
       controller: 'MeetingsController',
       resolve: {
