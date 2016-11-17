@@ -1,6 +1,6 @@
 myApp.controller('MeetingsController',
-  ['$scope', '$firebaseAuth', '$firebaseArray',
-  function($scope, $firebaseAuth, $firebaseArray) {
+  ['$scope', '$rootScope','$firebaseAuth', '$firebaseArray',
+  function($scope, $rootScope, $firebaseAuth, $firebaseArray) {
 
     var ref = firebase.database().ref();
     var auth = $firebaseAuth();
@@ -11,6 +11,14 @@ myApp.controller('MeetingsController',
         var meetingsInfo = $firebaseArray(meetingsRef);
 
         $scope.meetings = meetingsInfo;
+
+        meetingsInfo.$loaded().then(function(data) {
+          $rootScope.howManyMeetings = meetingsInfo.length;
+        }); // make sure meeting data is loaded
+
+        meetingsInfo.$watch(function(data) {
+          $rootScope.howManyMeetings = meetingsInfo.length;
+        });
 
         $scope.addMeeting = function() {
           meetingsInfo.$add({
@@ -24,7 +32,7 @@ myApp.controller('MeetingsController',
         $scope.deleteMeeting = function(key) {
           meetingsInfo.$remove(key);
         } //deleteMeeting
-              
+
       } //authUser
     }); //onAuthStateChanged
 }]); //myApp.controller

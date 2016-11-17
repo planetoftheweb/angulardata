@@ -30,6 +30,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
       }//resolve
     }).
     otherwise({
-      redirectTo: '/login'
+      redirectTo: '/meetings'
     });
 }]);
