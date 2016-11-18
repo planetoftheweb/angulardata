@@ -13,7 +13,7 @@ myApp.controller('CheckInsController',
       .child('checkins');
 
     checkinsList = $firebaseArray(ref);
-    $scope.checkins = checkinsList;  
+    $scope.checkins = checkinsList;
 
     $scope.addCheckin = function() {
       $firebaseArray(ref).$add({
@@ -26,5 +26,11 @@ myApp.controller('CheckInsController',
         $scope.whichmeeting + '/checkinsList')
       }); //$add
     }//addCheckin
+
+    $scope.deleteCheckin = function(id) {
+      var refDel = ref.child(id);
+      var record = $firebaseObject(refDel);
+      record.$remove(id);
+    }
 
 }]); //myApp.controller
