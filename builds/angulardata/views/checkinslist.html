@@ -74,7 +74,15 @@
           </form><!-- giveLove -->
           <ul class="awardslist cf">
             <li class="cf" ng-repeat="(key, award) in checkin.awards">
-              <div class="award">{{award.name}}</div>
+              <div class="award">
+                <div class="buttons">
+                  <button class="btn btn-delete award tooltip"
+                    ng-click="deleteLove(checkin,key)">
+                    <span>Delete this award</span>
+                  </button>
+                </div><!-- buttons -->
+                {{award.name}}
+              </div>
             </li>
           </ul>
         </div><!-- showcheckins -->

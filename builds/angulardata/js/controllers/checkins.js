@@ -39,6 +39,12 @@ myApp.controller('CheckInsController',
       });
     }
 
+    $scope.deleteLove = function(myCheckin, key) {
+      var refLove = ref.child(myCheckin.$id).child('awards').child(key);
+      var record = $firebaseObject(refLove);
+      record.$remove(key);
+    }
+
     $scope.addCheckin = function() {
       $firebaseArray(ref).$add({
         firstname: $scope.user.firstname,
