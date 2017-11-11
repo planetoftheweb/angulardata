@@ -1,7 +1,3 @@
-This is the repository for my course, AngularJS 1: Building a Data-Driven App on LinkedIn Learning and Lynda.com.
-
-tutorial, training, linkedinlearning, lynda, lynda-com, rayvillalobos
-
 # AngularJS 1: Building a Data-Driven App
 This is the repository for my course AngularJS 1: Building a Data-Driven App. The full course is available on [LinkedIn Learning](https://www.linkedin.com/learning/angularjs-1-building-a-data-driven-app-2?trk=insiders_6787408_learning) and [Lynda.com](https://www.lynda.com/AngularJS-tutorials/AngularJS-1-Building-Data-Driven-App/534629-2.html)
 
